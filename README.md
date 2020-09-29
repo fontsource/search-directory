@@ -1,4 +1,4 @@
-# Web Launcher
+# Fontsource Search
 
 A search directory website for the [Fontsource monorepo](https://github.com/fontsource/fontsource).
 
