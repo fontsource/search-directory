@@ -1,6 +1,6 @@
 # Web Launcher
 
-A search directory website for the [Fontsource monorepo](https://github.com/fontsource/fontsource)
+A search directory website for the [Fontsource monorepo](https://github.com/fontsource/fontsource).
 
 ## Development
 
