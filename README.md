@@ -18,12 +18,12 @@ To start development run `npm start` in the projects root directory. This will c
 
 ## Built With
 
-* [Babel](https://babeljs.io/) - Used to compile javascript in a way that increases backwards compatibility.
-* [ESLint](https://eslint.org/) - Used to enforce a certain coding style and correct syntax.
-* [Material-UI](https://material-ui.com/) - Used to create a smooth user interface based off of [Google’s Material Design](https://material.io/).
-* [Prettier](https://prettier.io/) - Used to format code in an efficient manner.
-* [React](https://reactjs.org/) - Used to the build and create reusable ui components.
-* [Webpack](https://webpack.js.org/) - Used to bundle modules into a browser ready format.
+- [Babel](https://babeljs.io/) - Used to compile javascript in a way that increases backwards compatibility.
+- [ESLint](https://eslint.org/) - Used to enforce a certain coding style and correct syntax.
+- [Material-UI](https://material-ui.com/) - Used to create a smooth user interface based off of [Google’s Material Design](https://material.io/).
+- [Prettier](https://prettier.io/) - Used to format code in an efficient manner.
+- [React](https://reactjs.org/) - Used to the build and create reusable ui components.
+- [Webpack](https://webpack.js.org/) - Used to bundle modules into a browser ready format.
 
 ## License
 

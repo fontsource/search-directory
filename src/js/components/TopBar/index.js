@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  AppBar,
-  InputBase,
-  Link,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import { AppBar, InputBase, Link, Toolbar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './style';
@@ -18,6 +12,7 @@ export default function TopBar({ setSearch }) {
   useEffect(() => {
     clearTimeout(timer);
     setTimer(setTimeout(() => setSearch(input), 300));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   return (
