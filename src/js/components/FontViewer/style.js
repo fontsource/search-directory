@@ -5,14 +5,4 @@ export default makeStyles(theme => ({
     margin: theme.spacing(3),
     width: '100%',
   },
-  divider: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-  },
-  links: {
-    margin: theme.spacing(2),
-  },
-  slider: {
-    width: '200px',
-  },
 }));

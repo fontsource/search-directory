@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
-import Code from './Code';
+import Code from '../Code';
 
 export default function installation({ fontData }) {
   return (
@@ -17,8 +17,8 @@ export default function installation({ fontData }) {
       </Typography>
 
       <Typography variant="body1" component="div" paragraph>
-        <Code language="js">
-          {`yarn add fontsource-${fontData.fontId} // npm install fontsource-${fontData.fontId}`}
+        <Code language="shell">
+          {`yarn add fontsource-${fontData.fontId} # npm install fontsource-${fontData.fontId}`}
         </Code>
       </Typography>
 
@@ -77,8 +77,8 @@ export default function installation({ fontData }) {
       </Typography>
 
       <Typography variant="body1" component="div" paragraph>
-        <Code language="scss">
-          {`body {\n` + `  font-family: "${fontData.fontName}";\n` + `}`}
+        <Code language="css">
+          {`body {\n  font-family: "${fontData.fontName}";\n}`}
         </Code>
       </Typography>
     </div>

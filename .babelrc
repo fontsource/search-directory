@@ -4,7 +4,7 @@
     [
       "prismjs",
       {
-        "languages": ["javascript", "scss"],
+        "languages": ["bash", "javascript", "scss", "css"],
         "plugins": ["show-language"],
         "theme": "okaidia",
         "css": true
