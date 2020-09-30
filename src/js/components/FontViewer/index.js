@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Divider, Link, Slider, Toolbar, Typography } from '@material-ui/core';
+import {
+  Divider,
+  Link,
+  Slider,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
 import Prism from 'prismjs';
 
 import fontSource from '../../fontSource';
@@ -64,19 +71,28 @@ export default function FontViewer({ view }) {
               : 'Style'
           }: ${fontData.styles.join(', ')}`}</Typography>
 
-          {/* Default Subset */}
-          {fontData.subsets.length > 1 ? (
-            <Typography variant="body1">{`Default Subset: ${fontData.defSubset}`}</Typography>
-          ) : (
-            ''
-          )}
-
           {/* Subsets */}
-          <Typography variant="body1">{`${
-            fontData.subsets.length > 1
-              ? `${fontData.subsets.length} Subsets`
-              : 'Subset'
-          }: ${fontData.subsets.join(', ')}`}</Typography>
+          {fontData.subsets.length > 1 ? (
+            <Typography variant="body1">
+              Subsets:&nbsp;
+              <Tooltip
+                title="Default Subset"
+                arrow={true}
+                enterDelay={500}
+                placement="top"
+              >
+                <b>{fontData.defSubset}</b>
+              </Tooltip>
+              ,&nbsp;
+              {fontData.subsets
+                .splice(fontData.subsets.indexOf(fontData.defSubset, 1))
+                .join(', ')}
+            </Typography>
+          ) : (
+            <Typography variant="body1">
+              Subset: {fontData.defSubset}
+            </Typography>
+          )}
 
           {/* Weights */}
           <Typography variant="body1">{`${

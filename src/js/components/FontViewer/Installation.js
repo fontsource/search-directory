@@ -16,7 +16,7 @@ export default function installation({ fontData }) {
         are compatible.
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         <Code language="js">
           {`yarn add fontsource-${fontData.fontId} // npm install fontsource-${fontData.fontId}`}
         </Code>
@@ -28,7 +28,7 @@ export default function installation({ fontData }) {
         (layout.js), page component (index.js), or gatsby-browser.js.
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         <Code language="js">
           {`import "fontsource-${fontData.fontId}"; // Defaults to weight 400 with all styles included.`}
         </Code>
@@ -40,7 +40,7 @@ export default function installation({ fontData }) {
         the CSS unicode-range selector, all language subsets are accounted for.
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         <Code language="js">
           {`import "fontsource-${fontData.fontId}/500.css" // All styles included.\n` +
             `import "fontsource-${fontData.fontId}/900-normal.css" // Select either normal or italic.`}
@@ -51,7 +51,7 @@ export default function installation({ fontData }) {
         Alternatively, the same solutions could be imported via SCSS!
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         <Code language="scss">
           {`@import "~fontsource-${fontData.fontId}/index.css";\n` +
             `@import "~fontsource-${fontData.fontId}/300-italic.css";`}
@@ -62,7 +62,7 @@ export default function installation({ fontData }) {
         These examples may not reflect actual compatibility. Please refer below.
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         Supported variables:
         <br />
         <ul>
@@ -76,11 +76,9 @@ export default function installation({ fontData }) {
         Module, or CSS-in-JS.
       </Typography>
 
-      <Typography variant="body1" paragraph>
+      <Typography variant="body1" component="div" paragraph>
         <Code language="scss">
-          {`body {\n` +
-            `  font-family: "${fontData.fontName}";\n` +
-            `}`}
+          {`body {\n` + `  font-family: "${fontData.fontName}";\n` + `}`}
         </Code>
       </Typography>
     </div>
