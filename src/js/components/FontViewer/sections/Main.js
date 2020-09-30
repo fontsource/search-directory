@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
 export default function FontViewer({ fontData, fontLoaded }) {
   const classes = useStyles();
   const [fontSize, setFontSize] = useState(36);
-
   return (
     <div>
       {/* Title */}
@@ -35,7 +34,7 @@ export default function FontViewer({ fontData, fontLoaded }) {
       {/* Subsets */}
       {fontData.subsets.length > 1 ? (
         <Typography variant="body1">
-          Subsets:&nbsp;
+          {fontData.subsets.length} Subsets:&nbsp;
           <Tooltip
             title="Default Subset"
             arrow={true}
@@ -45,9 +44,7 @@ export default function FontViewer({ fontData, fontLoaded }) {
             <b>{fontData.defSubset}</b>
           </Tooltip>
           ,&nbsp;
-          {fontData.subsets
-            .splice(fontData.subsets.indexOf(fontData.defSubset, 1))
-            .join(', ')}
+          {fontData.subsets.filter(v => fontData.defSubset !== v).join(', ')}
         </Typography>
       ) : (
         <Typography variant="body1">Subset: {fontData.defSubset}</Typography>
