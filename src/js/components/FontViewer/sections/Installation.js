@@ -7,7 +7,7 @@ export default function installation({ fontData }) {
   return (
     <div>
       <Typography variant="h5" paragraph>
-        Installation
+        Installation:
       </Typography>
 
       <Typography variant="body1" paragraph>
@@ -59,16 +59,8 @@ export default function installation({ fontData }) {
       </Typography>
 
       <Typography variant="body1" paragraph>
-        These examples may not reflect actual compatibility. Please refer below.
-      </Typography>
-
-      <Typography variant="body1" component="div" paragraph>
-        Supported variables:
-        <br />
-        <ul>
-          <li>Weights: [{fontData.weights.join(', ')}]</li>
-          <li>Styles: [{fontData.styles.join(', ')}]</li>
-        </ul>
+        These examples may not reflect actual compatibility. Please refer to the
+        variables at the top of the page.
       </Typography>
 
       <Typography variant="body1" paragraph>

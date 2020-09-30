@@ -25,10 +25,8 @@ export default function FontViewer({ fontData, fontLoaded }) {
       </Typography>
 
       {/* Styles */}
-      <Typography variant="body1">{`${
-        fontData.styles.length > 1
-          ? `${fontData.styles.length} Styles`
-          : 'Style'
+      <Typography variant="body1">{`${fontData.styles.length} Style${
+        fontData.styles.length > 1 ? 's' : ''
       }: ${fontData.styles.join(', ')}`}</Typography>
 
       {/* Subsets */}
@@ -47,14 +45,12 @@ export default function FontViewer({ fontData, fontLoaded }) {
           {fontData.subsets.filter(v => fontData.defSubset !== v).join(', ')}
         </Typography>
       ) : (
-        <Typography variant="body1">Subset: {fontData.defSubset}</Typography>
+        <Typography variant="body1">1 Subset: {fontData.defSubset}</Typography>
       )}
 
       {/* Weights */}
-      <Typography variant="body1">{`${
-        fontData.weights.length > 1
-          ? `${fontData.weights.length} Weights`
-          : 'Weight'
+      <Typography variant="body1">{`${fontData.weights.length} Weight${
+        fontData.weights.length > 1 ? 's' : ''
       }: ${fontData.weights.join(', ')}`}</Typography>
       <br />
       <Slider
