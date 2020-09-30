@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import TopBar from './components/TopBar';
-import FontList from './components/FontList';
-import FontViewer from './components/FontViewer';
+import TopBar from './TopBar';
+import FontList from './FontList';
+import FontViewer from './FontViewer';
 
 const drawerWidth = 240;
 

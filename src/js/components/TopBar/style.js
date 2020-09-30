@@ -1,6 +1,6 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+export default makeStyles(theme => ({
   title: {
     display: 'block',
     flexGrow: '1',
@@ -40,5 +40,3 @@ const useStyles = makeStyles(theme => ({
     zIndex: theme.zIndex.drawer + 1,
   },
 }));
-
-export default useStyles;
