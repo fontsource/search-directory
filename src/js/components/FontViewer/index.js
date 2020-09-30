@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Divider, Toolbar, Typography } from '@material-ui/core';
+import { Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
 
@@ -65,8 +65,6 @@ export default function FontViewer({ view }) {
           <br />
 
           <Installation fontData={fontData} />
-
-          <Divider classes={{ root: classes.divider }} />
 
           <Footer fontData={fontData} />
         </div>
