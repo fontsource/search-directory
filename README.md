@@ -26,7 +26,7 @@ To start development, run `npm start` in the project root directory. This will c
 - [ESLint](https://eslint.org/) - Used to enforce a certain coding style and correct syntax.
 - [Material-UI](https://material-ui.com/) - Used to create a smooth user interface based off [Google’s Material Design](https://material.io/).
 - [Prettier](https://prettier.io/) - Used to format code in an efficient manner.
-- [React](https://reactjs.org/) - Used to the build and create reusable ui components.
+- [React](https://reactjs.org/) - Used to build and create reusable UI components.
 - [Webpack](https://webpack.js.org/) - Used to bundle modules into a browser ready format.
 
 ## License
