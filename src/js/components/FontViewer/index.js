@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Toolbar, Typography } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
 
 import fontSource from '../../fontSource';
 
+import Homepage from '../Homepage';
 import Main from './sections/Main';
 import Installation from './sections/Installation';
 import Footer from './sections/Footer';
@@ -69,12 +70,7 @@ export default function FontViewer({ view }) {
           <Footer fontData={fontData} />
         </div>
       ) : (
-        <div>
-          {' '}
-          <Typography variant="h5" paragraph>
-            Select a font to get started.
-          </Typography>
-        </div>
+        <Homepage />
       )}
     </div>
   );
