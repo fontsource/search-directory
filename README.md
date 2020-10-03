@@ -4,7 +4,7 @@
 
 A search directory website for the [Fontsource monorepo](https://github.com/fontsource/fontsource).
 
-Directory link can be found [here](https://fontsource.github.io/fontsource-search-directory/).
+Directory link can be found [here](https://fontsource.github.io/search-directory/).
 
 ## Development
 
