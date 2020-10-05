@@ -48,14 +48,12 @@ export default function Homepage() {
 
       {/* License */}
       <Link
-        href="https://github.com/fontsource/fontsource-search-directory"
+        href="https://github.com/fontsource/search-directory"
         variant="body2"
         classes={{ root: classes.text }}
       >
-        Fontsource Search Directory On Github
+        Search Directory On Github
       </Link>
     </div>
   );
 }
-
-// Fontsource Search Directory
