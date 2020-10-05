@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Toolbar } from '@material-ui/core';
+import { CircularProgress, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
 
 import fontSource from '../../fontSource';
 
 import Homepage from '../Homepage';
-import Main from './sections/Main';
-import Installation from './sections/Installation';
-import Footer from './sections/Footer';
+import Main from './Main';
+import Installation from './Installation';
+import Footer from './Footer';
 
 // Generate root styles for FontViewer
 const useStyles = makeStyles(theme => ({
@@ -52,23 +52,35 @@ export default function FontViewer({ view }) {
               setFontLoaded(true);
             });
         });
+
+      // Fetch font file
+      new FontFace(view, `url(${fontSource.pkg(view).preview})`)
+        .load()
+        .then(result => {
+          document.fonts.add(result);
+          setFontLoaded(true);
+        });
     }
   }, [view]);
 
   return (
     <div className={classes.root}>
       <Toolbar />
-
+      {/* eslint-disable-next-line no-nested-ternary */}
       {view ? (
-        <div>
-          <Main fontData={fontData} fontLoaded={fontLoaded} />
+        view === fontData.fontId ? (
+          <div>
+            <Main fontData={fontData} fontLoaded={fontLoaded} />
 
-          <br />
+            <br />
 
-          <Installation fontData={fontData} />
+            <Installation fontData={fontData} />
 
-          <Footer fontData={fontData} />
-        </div>
+            <Footer fontData={fontData} />
+          </div>
+        ) : (
+          <CircularProgress />
+        )
       ) : (
         <Homepage />
       )}

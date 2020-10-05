@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, InputBase, Link, Toolbar } from '@material-ui/core';
+import {
+  AppBar,
+  IconButton,
+  InputBase,
+  Link,
+  Toolbar,
+} from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './style';
 
-export default function TopBar({ setSearch }) {
+export default function TopBar({ setSearch, openNav }) {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const [timer, setTimer] = useState();
@@ -18,6 +25,15 @@ export default function TopBar({ setSearch }) {
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={openNav}
+          className={classes.menuButton}
+        >
+          <Menu />
+        </IconButton>
         <div className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />

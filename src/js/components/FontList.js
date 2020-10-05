@@ -1,15 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import {
   Drawer,
+  Hidden,
   List,
   ListItem,
   ListItemText,
-  Toolbar,
+  useMediaQuery,
 } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
+import { drawerWidth } from '../variables';
 import fontSource from '../fontSource';
 
-const FontList = ({ classes, search, setView }) => {
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    [theme.breakpoints.up('md')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  drawerContainer: {
+    overflow: 'auto',
+  },
+}));
+
+const FontList = ({ search, setView, mobileOpen, closeNav }) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [fontList, setFontList] = useState([]);
   const [finalList, setFinalList] = useState([]);
 
@@ -39,37 +65,43 @@ const FontList = ({ classes, search, setView }) => {
           // Sort alphabetically
           return 0;
         })
+        .map(key => (
+          // Generate Font Navigation
+          <ListItem
+            onClick={() => {
+              setView(key);
+            }}
+            button
+            key={key}
+          >
+            <ListItemText primary={key} secondary={fontList[key]} />
+          </ListItem>
+        ))
     );
   }, [fontList, search]);
 
   return (
-    <Drawer
-      className={classes.drawer}
-      variant="permanent"
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
-      <Toolbar />
-      <div className={classes.drawerContainer}>
-        <List>
-          {
-            // Generate list UI
-            finalList.map(key => (
-              <ListItem
-                onClick={() => {
-                  setView(key);
-                }}
-                button
-                key={key}
-              >
-                <ListItemText primary={key} secondary={fontList[key]} />
-              </ListItem>
-            ))
-          }
-        </List>
-      </div>
-    </Drawer>
+    <nav className={classes.drawer}>
+      <Drawer
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        {...(mobile
+          ? // Mobile Version
+            {
+              variant: 'temporary',
+              open: mobileOpen,
+              onClose: closeNav,
+              ModalProps: {
+                keepMounted: true,
+              },
+            }
+          : // Desktop Version
+            { variant: 'permanent', open: true })}
+      >
+        {finalList}
+      </Drawer>
+    </nav>
   );
 };
 

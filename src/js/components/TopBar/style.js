@@ -1,4 +1,5 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { drawerWidth } from '../../variables';
 
 export default makeStyles(theme => ({
   title: {
@@ -8,6 +9,12 @@ export default makeStyles(theme => ({
   titleText: {
     float: 'right',
     color: 'white',
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
   search: {
     position: 'relative',
@@ -37,6 +44,9 @@ export default makeStyles(theme => ({
     width: '125px',
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   },
 }));
