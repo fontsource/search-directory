@@ -14,7 +14,9 @@ const fontSource = {
 
     return {
       metadata: `${folder}/metadata.json`,
+      npm: `https://www.npmjs.com/package/fontsource-${pkg}`,
       preview: `${folder}/files/${pkg}-${subset}-400-normal.woff`,
+      repo: `https://github.com/fontsource/fontsource/tree/master/packages/${pkg}`,
     };
   },
 };

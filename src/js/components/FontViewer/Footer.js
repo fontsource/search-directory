@@ -2,6 +2,8 @@ import React from 'react';
 import { Divider, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import fontSource from '../../fontSource';
+
 // Generate styles for Footer
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +15,10 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(4),
   },
   links: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1.5),
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+    },
   },
 }));
 
@@ -40,6 +45,24 @@ export default function FontViewer({ fontData }) {
         classes={{ root: classes.links }}
       >
         License
+      </Link>
+
+      {/* Github */}
+      <Link
+        href={fontSource.pkg(fontData.fontId).repo}
+        variant="body2"
+        classes={{ root: classes.links }}
+      >
+        Font On Github
+      </Link>
+
+      {/* NPM */}
+      <Link
+        href={fontSource.pkg(fontData.fontId).npm}
+        variant="body2"
+        classes={{ root: classes.links }}
+      >
+        Font On NPM
       </Link>
     </div>
   );
