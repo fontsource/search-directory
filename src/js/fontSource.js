@@ -7,13 +7,14 @@ const fontSource = {
 
   /**
    * @param {string} pkg
+   * @param {string} [subset]
    */
-  pkg(pkg) {
+  pkg(pkg, subset) {
     const folder = `${baseUrl}/packages/${pkg}`;
 
     return {
       metadata: `${folder}/metadata.json`,
-      preview: `${folder}/files/${pkg}-all-400-normal.woff`,
+      preview: `${folder}/files/${pkg}-${subset}-400-normal.woff`,
     };
   },
 };
