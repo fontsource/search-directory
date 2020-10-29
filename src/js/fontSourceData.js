@@ -1,7 +1,7 @@
 const baseUrl =
   'https://raw.githubusercontent.com/fontsource/fontsource/master';
 
-const fontSource = {
+const fontSourceData = {
   base: baseUrl,
   list: `${baseUrl}/FONTLIST.json`,
 
@@ -21,4 +21,4 @@ const fontSource = {
   },
 };
 
-export default fontSource;
+export default fontSourceData;

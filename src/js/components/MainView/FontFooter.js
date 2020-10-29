@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import fontSource from '../../fontSource';
+import fontSourceData from '../../fontSourceData';
 
 // Generate styles for Footer
 const useStyles = makeStyles(theme => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FontViewer({ fontData }) {
+export default function FontFooter({ fontData }) {
   const classes = useStyles();
 
   return (
@@ -49,7 +49,7 @@ export default function FontViewer({ fontData }) {
 
       {/* Github */}
       <Link
-        href={fontSource.pkg(fontData.fontId).repo}
+        href={fontSourceData.pkg(fontData.fontId).repo}
         variant="body2"
         classes={{ root: classes.links }}
       >
@@ -58,7 +58,7 @@ export default function FontViewer({ fontData }) {
 
       {/* NPM */}
       <Link
-        href={fontSource.pkg(fontData.fontId).npm}
+        href={fontSourceData.pkg(fontData.fontId).npm}
         variant="body2"
         classes={{ root: classes.links }}
       >

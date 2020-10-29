@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import useEventListener from '@use-it/event-listener';
 
 import TopBar from './TopBar';
-import FontList from './FontList';
-import FontViewer from './FontViewer';
+import SideNav from './SideNav';
+import FontViewer from './MainView';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -39,7 +39,7 @@ export default function App() {
           openNav: () => setMobileOpen(true),
         }}
       />
-      <FontList
+      <SideNav
         {...{
           search,
           setView,

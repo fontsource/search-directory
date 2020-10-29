@@ -3,12 +3,12 @@ import { CircularProgress, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
 
-import fontSource from '../../fontSource';
+import fontSourceData from '../../fontSourceData';
 
 import Homepage from '../Homepage';
-import Main from './Main';
-import Installation from './Installation';
-import Footer from './Footer';
+import FontPreview from './FontPreview';
+import FontInstallation from './FontInstallation';
+import FontFooter from './FontFooter';
 
 // Generate root styles for FontViewer
 const useStyles = makeStyles(theme => ({
@@ -36,7 +36,7 @@ export default function FontViewer({ view }) {
   useEffect(() => {
     setFontLoaded(false);
     if (view.length > 0) {
-      fetch(fontSource.pkg(view).metadata)
+      fetch(fontSourceData.pkg(view).metadata)
         .then(response => response.json())
         .then(data => {
           setFontData(data);
@@ -45,7 +45,7 @@ export default function FontViewer({ view }) {
             // Fetch font file
             new FontFace(
               data.fontId,
-              `url(${fontSource.pkg(data.fontId, 'latin').preview})`
+              `url(${fontSourceData.pkg(data.fontId, 'latin').preview})`
             )
               .load()
               .then(result => {
@@ -56,7 +56,7 @@ export default function FontViewer({ view }) {
         });
 
       // Fetch font file
-      new FontFace(view, `url(${fontSource.pkg(view).preview})`)
+      new FontFace(view, `url(${fontSourceData.pkg(view).preview})`)
         .load()
         .then(result => {
           document.fonts.add(result);
@@ -72,13 +72,13 @@ export default function FontViewer({ view }) {
       {view ? (
         view === fontData.fontId ? (
           <div>
-            <Main fontData={fontData} fontLoaded={fontLoaded} />
+            <FontPreview fontData={fontData} fontLoaded={fontLoaded} />
 
             <br />
 
-            <Installation fontData={fontData} />
+            <FontInstallation fontData={fontData} />
 
-            <Footer fontData={fontData} />
+            <FontFooter fontData={fontData} />
           </div>
         ) : (
           <CircularProgress />

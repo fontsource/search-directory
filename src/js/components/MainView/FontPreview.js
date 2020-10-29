@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function FontViewer({ fontData, fontLoaded }) {
+export default function FontPreview({ fontData, fontLoaded }) {
   const classes = useStyles();
   const [fontSize, setFontSize] = useState(36);
   return (

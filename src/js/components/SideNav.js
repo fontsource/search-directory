@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Drawer,
-  Hidden,
-  List,
   ListItem,
   ListItemText,
   useMediaQuery,
@@ -10,7 +8,7 @@ import {
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import { drawerWidth } from '../variables';
-import fontSource from '../fontSource';
+import fontSourceData from '../fontSourceData';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -31,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const FontList = ({ search, setView, mobileOpen, closeNav }) => {
+const SideNav = ({ search, setView, mobileOpen, closeNav }) => {
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -40,7 +38,7 @@ const FontList = ({ search, setView, mobileOpen, closeNav }) => {
   const [finalList, setFinalList] = useState([]);
 
   useEffect(() => {
-    fetch(fontSource.list)
+    fetch(fontSourceData.list)
       .then(response => response.json())
       .then(data => {
         setFontList(data);
@@ -78,6 +76,7 @@ const FontList = ({ search, setView, mobileOpen, closeNav }) => {
           </ListItem>
         ))
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fontList, search]);
 
   return (
@@ -105,4 +104,4 @@ const FontList = ({ search, setView, mobileOpen, closeNav }) => {
   );
 };
 
-export default React.memo(FontList);
+export default React.memo(SideNav);

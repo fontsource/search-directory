@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 import Code from '../Code';
 
-export default function installation({ fontData }) {
+export default function FontInstallation({ fontData }) {
   return (
     <div>
       <Typography variant="h5" paragraph>
