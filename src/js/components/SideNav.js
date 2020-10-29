@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {
   Drawer,
   ListItem,
+  ListItemIcon,
   ListItemText,
   useMediaQuery,
 } from '@material-ui/core';
+import { Home } from '@material-ui/icons';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import { drawerWidth } from '../variables';
@@ -98,6 +100,18 @@ const SideNav = ({ search, setView, mobileOpen, closeNav }) => {
           : // Desktop Version
             { variant: 'permanent', open: true })}
       >
+        <ListItem
+          onClick={() => {
+            setView('');
+          }}
+          button
+          divider
+        >
+          <ListItemIcon>
+            <Home />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
         {finalList}
       </Drawer>
     </nav>

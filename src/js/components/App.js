@@ -21,7 +21,7 @@ export default function App() {
 
   // If view is changed , update hash
   useEffect(() => {
-    if (view.length > 0) window.location.hash = view;
+    window.location.hash = view;
   }, [view]);
 
   // Listen for URL hash changes and update view
