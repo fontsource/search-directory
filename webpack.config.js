@@ -26,7 +26,14 @@ module.exports = env => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          test: /\.(png)$/,
+          loader: 'url-loader',
+          options: {
+            limit: 100000,
+          },
+        },
+        {
+          test: /\.(woff|woff2)$/,
           loader: 'url-loader',
           options: {
             limit: 100000,
@@ -39,6 +46,7 @@ module.exports = env => {
       new HtmlWebpackPlugin({
         template: './src/template.html',
         inject: 'body',
+        favicon: './src/favicon.png',
       }),
     ],
     optimization: {
