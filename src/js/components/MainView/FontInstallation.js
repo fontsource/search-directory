@@ -18,7 +18,7 @@ export default function FontInstallation({ fontData }) {
 
       <Typography variant="body1" component="div" paragraph>
         <Code language="javascript">
-          {`yarn add fontsource-${fontData.fontId} # npm install fontsource-${fontData.fontId}`}
+          {`yarn add fontsource-${fontData.fontId} // npm install fontsource-${fontData.fontId}`}
         </Code>
       </Typography>
 
