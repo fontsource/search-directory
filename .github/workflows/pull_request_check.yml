@@ -1,0 +1,28 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Packages
+        run: npm ci
+
+      - name: Format Source Files
+        run: npm run format
+
+      - name: Lint Source Files
+        run: npm run lint
+
+      - name: Build Public Files
+        run: npm run build
