@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CircularProgress, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
