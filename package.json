@@ -34,7 +34,7 @@
     "prettier": "^2.1.1",
     "prismjs": "^1.21.0",
     "react": "^16.14.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "style-loader": "^1.2.1",
