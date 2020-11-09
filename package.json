@@ -37,7 +37,7 @@
     "react-dom": "^16.14.0",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
-    "style-loader": "^1.2.1",
+    "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "use-http": "^1.0.13",
     "webpack": "^4.43.0",
