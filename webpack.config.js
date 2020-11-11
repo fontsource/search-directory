@@ -1,6 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = env => {
@@ -49,16 +48,5 @@ module.exports = env => {
         favicon: './src/favicon.png',
       }),
     ],
-    optimization: {
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            output: {
-              comments: false,
-            },
-          },
-        }),
-      ],
-    },
   };
 };
