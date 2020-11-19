@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import P from './Paragraph';
 
 /**
  * Code syntax highlighter
@@ -8,10 +8,10 @@ import { Typography } from '@material-ui/core';
  */
 export default function Code({ children, lang }) {
   return (
-    <Typography variant="body1" component="div" paragraph>
+    <P component="div">
       <pre>
         <code className={`lang-${lang}`}>{children}</code>
       </pre>
-    </Typography>
+    </P>
   );
 }

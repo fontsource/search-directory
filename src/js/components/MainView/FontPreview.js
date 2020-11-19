@@ -24,7 +24,7 @@ export default function FontPreview({ fontData, fontLoaded }) {
       {/* Version */}
       <P classes={{ root: classes.inline }}>{` ${fontData.version}`}</P>
 
-      <P>
+      <P component="div">
         {/* Styles */}
         <div>{`${fontData.styles.length} Style${
           fontData.styles.length > 1 ? 's' : ''
