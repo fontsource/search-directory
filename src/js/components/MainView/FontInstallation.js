@@ -1,77 +1,73 @@
-import { Typography } from '@material-ui/core';
-
-import Code from '../Code';
+import { H5 } from '../general/Headers';
+import P from '../general/Paragraph';
+import Code from '../general/Code';
 
 export default function FontInstallation({ fontData }) {
   return (
-    <div>
-      <Typography variant="h5" paragraph>
-        Installation:
-      </Typography>
+    <>
+      <H5>Installation:</H5>
 
-      <Typography variant="body1" paragraph>
+      <P>
         Fontsource assumes you are using a bundler, such as Webpack, to load in
         CSS. Solutions like CRA, Gatsby and Next.js are prebuilt examples that
         are compatible.
-      </Typography>
+      </P>
 
-      <Typography variant="body1" component="div" paragraph>
-        <Code language="javascript">
-          {`yarn add fontsource-${fontData.fontId} // npm install fontsource-${fontData.fontId}`}
-        </Code>
-      </Typography>
+      <Code lang="javascript">
+        yarn add fontsource-{fontData.fontId} &#47;&#47; npm install fontsource-
+        {fontData.fontId}
+      </Code>
 
-      <Typography variant="body1" paragraph>
+      <P>
         Then within your app entry file or site component, import it in. For
         example in Gatsby, you could choose to import it into a layout template
         (layout.js), page component (index.js), or gatsby-browser.js.
-      </Typography>
+      </P>
 
-      <Typography variant="body1" component="div" paragraph>
-        <Code language="js">
-          {`import "fontsource-${fontData.fontId}"; // Defaults to weight 400 with all styles included.`}
-        </Code>
-      </Typography>
+      <Code lang="js">
+        import &#34;fontsource-{fontData.fontId}&#34;; &#47;&#47; Defaults to
+        weight 400 with all styles included.
+      </Code>
 
-      <Typography variant="body1" paragraph>
+      <P>
         Fontsource allows you to select weights and even individual styles,
         allowing you to cut down on payload sizes to the last byte! Utilizing
         the CSS unicode-range selector, all language subsets are accounted for.
-      </Typography>
+      </P>
 
-      <Typography variant="body1" component="div" paragraph>
-        <Code language="js">
-          {`import "fontsource-${fontData.fontId}/500.css" // All styles included.\n` +
-            `import "fontsource-${fontData.fontId}/900-normal.css" // Select either normal or italic.`}
-        </Code>
-      </Typography>
+      <Code lang="js">
+        import &#34;fontsource-{fontData.fontId}/500.css&#34; &#47;&#47; All
+        styles included.
+        {'\n'}
+        import &#34;fontsource-{fontData.fontId}
+        /900-normal.css&#34; &#47;&#47; Select either normal or italic.
+      </Code>
 
-      <Typography variant="body1" paragraph>
-        Alternatively, the same solutions could be imported via SCSS!
-      </Typography>
+      <P>Alternatively, the same solutions could be imported via SCSS!</P>
 
-      <Typography variant="body1" component="div" paragraph>
-        <Code language="scss">
-          {`@import "~fontsource-${fontData.fontId}/index.css";\n` +
-            `@import "~fontsource-${fontData.fontId}/300-italic.css";`}
-        </Code>
-      </Typography>
+      <Code lang="scss">
+        @import &#34;~fontsource-{fontData.fontId}/index.css&#34;;
+        {'\n'}
+        @import &#34;~fontsource-{fontData.fontId}/300-italic.css&#34;;
+      </Code>
 
-      <Typography variant="body1" paragraph>
+      <P>
         These examples may not reflect actual compatibility. Please refer to the
         variables at the top of the page.
-      </Typography>
+      </P>
 
-      <Typography variant="body1" paragraph>
+      <P>
         Finally, you can reference the font name in a CSS stylesheet, CSS
         Module, or CSS-in-JS.
-      </Typography>
+      </P>
 
-      <Typography variant="body1" component="div" paragraph>
-        <Code language="css">
-          {`body {\n  font-family: "${fontData.fontName}";\n}`}
-        </Code>
-      </Typography>
-    </div>
+      <Code lang="css">
+        body &#123;
+        {'\n'}
+        {'  '}font-family: &#34;{fontData.fontName}&#34;;
+        {'\n'}
+        &#125;
+      </Code>
+    </>
   );
 }

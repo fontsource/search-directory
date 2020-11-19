@@ -1,37 +1,37 @@
 import { useState } from 'react';
-import { Slider, Tooltip, Typography } from '@material-ui/core';
+import { Slider, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { H2 } from '../general/Headers';
+import P from '../general/Paragraph';
 
 // Generate styles for Main
 const useStyles = makeStyles(() => ({
-  slider: {
-    width: '200px',
+  inline: {
+    display: 'inline',
   },
 }));
 
 export default function FontPreview({ fontData, fontLoaded }) {
   const classes = useStyles();
   const [fontSize, setFontSize] = useState(36);
+
   return (
-    <div>
+    <>
       {/* Title */}
-      <Typography variant="h2" display="inline" gutterBottom>
-        {fontData.fontName}
-      </Typography>
+      <H2 classes={{ root: classes.inline }}>{fontData.fontName}</H2>
 
       {/* Version */}
-      <Typography variant="subtitle1" display="inline">
-        {` ${fontData.version}`}
-      </Typography>
+      <P classes={{ root: classes.inline }}>{` ${fontData.version}`}</P>
 
       {/* Styles */}
-      <Typography variant="body1">{`${fontData.styles.length} Style${
+      <P>{`${fontData.styles.length} Style${
         fontData.styles.length > 1 ? 's' : ''
-      }: ${fontData.styles.join(', ')}`}</Typography>
+      }: ${fontData.styles.join(', ')}`}</P>
 
       {/* Subsets */}
       {fontData.subsets.length > 1 ? (
-        <Typography variant="body1">
+        <P>
           {fontData.subsets.length} Subsets:&nbsp;
           <Tooltip
             title="Default Subset"
@@ -43,15 +43,15 @@ export default function FontPreview({ fontData, fontLoaded }) {
           </Tooltip>
           ,&nbsp;
           {fontData.subsets.filter(v => fontData.defSubset !== v).join(', ')}
-        </Typography>
+        </P>
       ) : (
-        <Typography variant="body1">1 Subset: {fontData.defSubset}</Typography>
+        <P>1 Subset: {fontData.defSubset}</P>
       )}
 
       {/* Weights */}
-      <Typography variant="body1">{`${fontData.weights.length} Weight${
+      <P>{`${fontData.weights.length} Weight${
         fontData.weights.length > 1 ? 's' : ''
-      }: ${fontData.weights.join(', ')}`}</Typography>
+      }: ${fontData.weights.join(', ')}`}</P>
       <br />
       <Slider
         classes={{ root: classes.slider }}
@@ -66,7 +66,7 @@ export default function FontPreview({ fontData, fontLoaded }) {
         valueLabelDisplay="auto"
       />
       {fontLoaded ? (
-        <Typography variant="body1" paragraph>
+        <P>
           <span
             style={{
               fontFamily: fontData.fontId,
@@ -75,10 +75,10 @@ export default function FontPreview({ fontData, fontLoaded }) {
           >
             The quick brown fox jumps over the lazy dog.
           </span>
-        </Typography>
+        </P>
       ) : (
         ''
       )}
-    </div>
+    </>
   );
 }

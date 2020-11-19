@@ -1,18 +1,12 @@
-import { Divider, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import P from '../general/Paragraph';
+import HR from '../general/HorizontalRule';
 
 import fontSourceData from '../../fontSourceData';
 
 // Generate styles for Footer
 const useStyles = makeStyles(theme => ({
-  root: {
-    margin: theme.spacing(3),
-    width: '100%',
-  },
-  divider: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-  },
   links: {
     margin: theme.spacing(1.5),
     [theme.breakpoints.down('xs')]: {
@@ -25,44 +19,36 @@ export default function FontFooter({ fontData }) {
   const classes = useStyles();
 
   return (
-    <div>
-      <Divider classes={{ root: classes.divider }} />
+    <>
+      <HR />
 
       {/* Source */}
-      <Link
-        href={fontData.source}
-        variant="body2"
-        classes={{ root: classes.links }}
-      >
-        Source
-      </Link>
+      <P>
+        <a href={fontData.source} className={classes.links}>
+          Source
+        </a>
 
-      {/* License */}
-      <Link
-        href={fontData.license}
-        variant="body2"
-        classes={{ root: classes.links }}
-      >
-        License
-      </Link>
+        {/* License */}
+        <a href={fontData.license} className={classes.links}>
+          License
+        </a>
 
-      {/* Github */}
-      <Link
-        href={fontSourceData.pkg(fontData.fontId).repo}
-        variant="body2"
-        classes={{ root: classes.links }}
-      >
-        Font On Github
-      </Link>
+        {/* Github */}
+        <a
+          href={fontSourceData.pkg(fontData.fontId).repo}
+          className={classes.links}
+        >
+          Font On Github
+        </a>
 
-      {/* NPM */}
-      <Link
-        href={fontSourceData.pkg(fontData.fontId).npm}
-        variant="body2"
-        classes={{ root: classes.links }}
-      >
-        Font On NPM
-      </Link>
-    </div>
+        {/* NPM */}
+        <a
+          href={fontSourceData.pkg(fontData.fontId).npm}
+          className={classes.links}
+        >
+          Font On NPM
+        </a>
+      </P>
+    </>
   );
 }

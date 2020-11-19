@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { CircularProgress, Toolbar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Prism from 'prismjs';
+
+import Doc from '../general/Doc';
 
 import fontSourceData from '../../fontSourceData';
 
@@ -10,16 +11,7 @@ import FontPreview from './FontPreview';
 import FontInstallation from './FontInstallation';
 import FontFooter from './FontFooter';
 
-// Generate root styles for FontViewer
-const useStyles = makeStyles(theme => ({
-  root: {
-    margin: theme.spacing(3),
-    width: '100%',
-  },
-}));
-
 export default function FontViewer({ view }) {
-  const classes = useStyles();
   const [fontData, setFontData] = useState({
     styles: [],
     subsets: [],
@@ -66,26 +58,25 @@ export default function FontViewer({ view }) {
   }, [view]);
 
   return (
-    <div className={classes.root}>
+    <Doc>
       <Toolbar />
+      <br />
       {/* eslint-disable-next-line no-nested-ternary */}
       {view ? (
         view === fontData.fontId ? (
-          <div>
+          <>
             <FontPreview fontData={fontData} fontLoaded={fontLoaded} />
-
-            <br />
 
             <FontInstallation fontData={fontData} />
 
             <FontFooter fontData={fontData} />
-          </div>
+          </>
         ) : (
           <CircularProgress />
         )
       ) : (
         <Homepage />
       )}
-    </div>
+    </Doc>
   );
 }
