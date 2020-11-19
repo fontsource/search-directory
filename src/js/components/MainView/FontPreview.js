@@ -24,35 +24,36 @@ export default function FontPreview({ fontData, fontLoaded }) {
       {/* Version */}
       <P classes={{ root: classes.inline }}>{` ${fontData.version}`}</P>
 
-      {/* Styles */}
-      <P>{`${fontData.styles.length} Style${
-        fontData.styles.length > 1 ? 's' : ''
-      }: ${fontData.styles.join(', ')}`}</P>
+      <P>
+        {/* Styles */}
+        <div>{`${fontData.styles.length} Style${
+          fontData.styles.length > 1 ? 's' : ''
+        }: ${fontData.styles.join(', ')}`}</div>
 
-      {/* Subsets */}
-      {fontData.subsets.length > 1 ? (
-        <P>
-          {fontData.subsets.length} Subsets:&nbsp;
-          <Tooltip
-            title="Default Subset"
-            arrow={true}
-            enterDelay={500}
-            placement="top"
-          >
-            <b>{fontData.defSubset}</b>
-          </Tooltip>
-          ,&nbsp;
-          {fontData.subsets.filter(v => fontData.defSubset !== v).join(', ')}
-        </P>
-      ) : (
-        <P>1 Subset: {fontData.defSubset}</P>
-      )}
+        {/* Subsets */}
+        {fontData.subsets.length > 1 ? (
+          <div>
+            {fontData.subsets.length} Subsets:&nbsp;
+            <Tooltip
+              title="Default Subset"
+              arrow={true}
+              enterDelay={500}
+              placement="top"
+            >
+              <b>{fontData.defSubset}</b>
+            </Tooltip>
+            ,&nbsp;
+            {fontData.subsets.filter(v => fontData.defSubset !== v).join(', ')}
+          </div>
+        ) : (
+          <div>1 Subset: {fontData.defSubset}</div>
+        )}
 
-      {/* Weights */}
-      <P>{`${fontData.weights.length} Weight${
-        fontData.weights.length > 1 ? 's' : ''
-      }: ${fontData.weights.join(', ')}`}</P>
-      <br />
+        {/* Weights */}
+        <div>{`${fontData.weights.length} Weight${
+          fontData.weights.length > 1 ? 's' : ''
+        }: ${fontData.weights.join(', ')}`}</div>
+      </P>
       <Slider
         classes={{ root: classes.slider }}
         defaultValue={36}
