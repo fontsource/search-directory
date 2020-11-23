@@ -1,6 +1,6 @@
 # Fontsource Search Directory
 
-[![Generic badge](https://img.shields.io/badge/fontsource-passing-brightgreen)](https://github.com/fontsource/fontsource) [![License](https://badgen.net/badge/license/MIT/green)](https://github.com/fontsource/fontsource/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/fontsource/fontsource-search-directory.svg?style=social&label=Star)](https://github.com/fontsource/search-directory/stargazers)
+[![GitHub workflow status](https://img.shields.io/github/workflow/status/fontsource/search-directory/Publish%20Website)](https://github.com/fontsource/search-directory/actions?query=workflow%3A%22Publish+Website%22) [![license](https://img.shields.io/static/v1?label=license&message=MIT&color=brightgreen)](LICENSE) [![GitHub stars](https://img.shields.io/github/stars/fontsource/fontsource-search-directory.svg?style=social&label=Star)](https://github.com/fontsource/search-directory/stargazers)
 
 A search directory website for the [Fontsource monorepo](https://github.com/fontsource/fontsource).
 
