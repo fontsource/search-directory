@@ -8,8 +8,6 @@
     "lint": "eslint --fix .",
     "start": "webpack-dev-server --env development --config ./webpack.config.js --open"
   },
-  "author": "fontsource",
-  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.12.7",
     "@babel/preset-env": "^7.12.7",
