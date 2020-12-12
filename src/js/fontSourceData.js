@@ -7,7 +7,7 @@ const fontSourceData = {
 
   /**
    * @param {string} pkg
-   * @param {string} [subset]
+   * @param {string} subset
    */
   pkg(pkg, subset) {
     const folder = `${baseUrl}/packages/${pkg}`;

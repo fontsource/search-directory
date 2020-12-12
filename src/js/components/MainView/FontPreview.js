@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Slider, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import previewGenerator from '../previewGenerator';
+
 import { H2 } from '../general/Headers';
 import P from '../general/Paragraph';
 
@@ -74,7 +76,7 @@ export default function FontPreview({ fontData, fontLoaded }) {
               fontSize: `${fontSize}px`,
             }}
           >
-            The quick brown fox jumps over the lazy dog.
+            {previewGenerator(fontData.defSubset, fontData.fontId)}
           </span>
         </P>
       ) : (

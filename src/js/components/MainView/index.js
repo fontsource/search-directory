@@ -32,11 +32,11 @@ export default function FontViewer({ view }) {
         .then(response => response.json())
         .then(data => {
           setFontData(data);
-
+          console.log(fontSourceData.pkg(data.fontId, data.defSubset).preview);
           // Fetch font file
           new FontFace(
             data.fontId,
-            `url(${fontSourceData.pkg(data.fontId, data.subsets[0]).preview})`
+            `url(${fontSourceData.pkg(data.fontId, data.defSubset).preview})`
           )
             .load()
             .then(result => {
