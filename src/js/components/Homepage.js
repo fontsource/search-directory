@@ -33,7 +33,7 @@ export default function Homepage() {
         </a>{' '}
         <a href="https://github.com/fontsource/fontsource/stargazers">
           <img
-            src="https://img.shields.io/github/stars/DecliningLotus/fontsource.svg?style=social&amp;label=Star"
+            src="https://img.shields.io/github/stars/fontsource/fontsource.svg?style=social&amp;label=Star"
             alt="GitHub stars"
           />
         </a>
@@ -123,8 +123,8 @@ export default function Homepage() {
       </P>
 
       <Code lang="javascript">
-        import &quot;fontsource-open-sans&quot; // Defaults to weight 400 with
-        all styles included.
+        import &#34;fontsource-open-sans&#34; // Defaults to weight 400 with all
+        styles included.
       </Code>
 
       <P>
@@ -134,18 +134,18 @@ export default function Homepage() {
       </P>
 
       <Code lang="javascript">
-        import &quot;fontsource-open-sans/500.css&quot; // All styles included.
+        import &#34;fontsource-open-sans/500.css&#34; // All styles included.
         {'\n'}
-        import &quot;fontsource-open-sans/900-normal.css&quot; // Select either
+        import &#34;fontsource-open-sans/900-normal.css&#34; // Select either
         normal or italic.
       </Code>
 
       <P>Alternatively, the same solutions could be imported via SCSS!</P>
 
       <Code lang="scss">
-        @import &quot;~fontsource-open-sans/index.css&quot;;
+        @import &#34;~fontsource-open-sans/index.css&#34;;
         {'\n'}
-        @import &quot;~fontsource-open-sans/300-italic.css&quot;;
+        @import &#34;~fontsource-open-sans/300-italic.css&#34;;
       </Code>
 
       <P>
@@ -165,6 +165,17 @@ export default function Homepage() {
 
       <HR />
 
+      <H4>Variable Fonts</H4>
+
+      <P>
+        This repository supports variable fonts that Google Fonts provide. You
+        can find the full list of available options{' '}
+        <a href="https://fonts.google.com/variablefonts">here</a>. Instructions
+        on how to install and use can be found on the relevant package README.
+      </P>
+
+      <HR />
+
       <H4>Additional Options</H4>
 
       <P>
@@ -175,11 +186,11 @@ export default function Homepage() {
       </P>
 
       <Code lang="javascript">
-        import &quot;fontsource-open-sans/latin-ext.css&quot; // All weights and
+        import &#34;fontsource-open-sans/latin-ext.css&#34; // All weights and
         styles included.{'\n'}
-        import &quot;fontsource-open-sans/cyrillic-ext-500.css&quot; // All
-        styles included.{'\n'}
-        import &quot;fontsource-open-sans/greek-900-normal.css&quot; // Select
+        import &#34;fontsource-open-sans/cyrillic-ext-500.css&#34; // All styles
+        included.{'\n'}
+        import &#34;fontsource-open-sans/greek-900-normal.css&#34; // Select
         either normal or italic.
       </Code>
 
