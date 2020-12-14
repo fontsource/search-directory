@@ -32,19 +32,17 @@ export default function FontViewer({ view }) {
         .then(response => response.json())
         .then(data => {
           setFontData(data);
-
-          if (data.subsets.includes('latin')) {
-            // Fetch font file
-            new FontFace(
-              data.fontId,
-              `url(${fontSourceData.pkg(data.fontId, 'latin').preview})`
-            )
-              .load()
-              .then(result => {
-                document.fonts.add(result);
-                setFontLoaded(true);
-              });
-          }
+          console.log(fontSourceData.pkg(data.fontId, data.defSubset).preview);
+          // Fetch font file
+          new FontFace(
+            data.fontId,
+            `url(${fontSourceData.pkg(data.fontId, data.defSubset).preview})`
+          )
+            .load()
+            .then(result => {
+              document.fonts.add(result);
+              setFontLoaded(true);
+            });
         });
 
       // Fetch font file
