@@ -48,13 +48,15 @@ const SideNav = ({ search, setView, mobileOpen, closeNav }) => {
   }, []);
 
   useEffect(() => {
+    const optimizedSearch = search.toLowerCase().replace(/[^\w\d]+/g, '-');
+
     setFinalList(
       Object.keys(fontList)
         // Filter array to items that contain search
-        .filter(v => v.includes(search))
+        .filter(v => v.includes(optimizedSearch))
         .sort((a, b) => {
-          const aIndex = a.indexOf(search);
-          const bIndex = b.indexOf(search);
+          const aIndex = a.indexOf(optimizedSearch);
+          const bIndex = b.indexOf(optimizedSearch);
           // Sort by index search key is at
           if (aIndex < bIndex) {
             return -1;
