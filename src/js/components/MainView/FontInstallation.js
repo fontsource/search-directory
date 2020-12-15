@@ -137,7 +137,7 @@ export default function FontInstallation({ fontData }) {
             utilizing the font-variation-settings tag.
           </P>
 
-          <Code lang="js">
+          <Code lang="css">
             h1 &#123;
             {'\n'}
             {'  '}font-family: {fontData.fontName};{'\n'}
@@ -163,11 +163,9 @@ export default function FontInstallation({ fontData }) {
             <i>
               To view the available variable axes that may be included in the
               font, click{' '}
-              <a href="https://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefontshttps://fonts.google.com/variablefonts">
-                here
-              </a>
-              . The meanings of all axes and the restrictions associated with
-              them are explained there.
+              <a href="https://fonts.google.com/variablefonts">here</a>. The
+              meanings of all axes and the restrictions associated with them are
+              explained there.
             </i>
           </P>
         </>

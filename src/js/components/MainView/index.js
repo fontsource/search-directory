@@ -20,9 +20,7 @@ export default function FontViewer({ view }) {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   // Highlight code after each render
-  useEffect(() => {
-    return () => Prism.highlightAll();
-  });
+  useEffect(() => Prism.highlightAll());
 
   // Fetch font data
   useEffect(() => {
@@ -32,7 +30,6 @@ export default function FontViewer({ view }) {
         .then(response => response.json())
         .then(data => {
           setFontData(data);
-          console.log(fontSourceData.pkg(data.fontId, data.defSubset).preview);
           // Fetch font file
           new FontFace(
             data.fontId,
