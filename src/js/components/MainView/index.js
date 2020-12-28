@@ -1,77 +1,90 @@
 import { useState, useEffect } from 'react';
-import { CircularProgress, Toolbar } from '@material-ui/core';
-import Prism from 'prismjs';
+import { Toolbar } from '@material-ui/core';
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+import useFetch from '../../hooks/useFetch';
 import Doc from '../general/Doc';
 
 import fontSourceData from '../../fontSourceData';
 
-import Homepage from '../Homepage';
 import FontPreview from './FontPreview';
-import FontInstallation from './FontInstallation';
 import FontFooter from './FontFooter';
 
 export default function FontViewer({ view }) {
-  const [fontData, setFontData] = useState({
-    styles: [],
-    subsets: [],
-    weights: [],
-  });
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  // Highlight code after each render
-  useEffect(() => Prism.highlightAll());
+  let markdownUrl = '';
+
+  switch (view) {
+    case '':
+      markdownUrl = fontSourceData.readme;
+      break;
+    case 'CHANGELOG':
+      markdownUrl = fontSourceData.changelog;
+      break;
+    default:
+      markdownUrl = fontSourceData.pkg(view).readme;
+      break;
+  }
+
+  const fontReadme = useFetch(markdownUrl);
+
+  let fontData = useFetch(
+    view !== '' && view !== 'CHANGELOG'
+      ? fontSourceData.pkg(view).metadata
+      : '',
+    true
+  );
+
+  if (fontData === '') {
+    fontData = {
+      styles: [],
+      subsets: [],
+      weights: [],
+    };
+  }
 
   // Fetch font data
   useEffect(() => {
     setFontLoaded(false);
-    if (view.length > 0) {
-      fetch(fontSourceData.pkg(view).metadata)
-        .then(response => response.json())
-        .then(data => {
-          setFontData(data);
-          // Fetch font file
-          new FontFace(
-            data.fontId,
-            `url(${fontSourceData.pkg(data.fontId, data.defSubset).preview})`
-          )
-            .load()
-            .then(result => {
-              document.fonts.add(result);
-              setFontLoaded(true);
-            });
-        });
-
+    if (fontData.fontId) {
       // Fetch font file
-      new FontFace(view, `url(${fontSourceData.pkg(view).preview})`)
+      new FontFace(
+        fontData.fontId,
+        `url(${
+          fontSourceData.pkg(fontData.fontId, fontData.defSubset).preview
+        })`
+      )
         .load()
         .then(result => {
           document.fonts.add(result);
           setFontLoaded(true);
         });
     }
-  }, [view]);
+  }, [fontData]);
 
   return (
     <Doc>
       <Toolbar />
       <br />
-      {/* eslint-disable-next-line no-nested-ternary */}
-      {view ? (
-        view === fontData.fontId ? (
-          <>
-            <FontPreview fontData={fontData} fontLoaded={fontLoaded} />
-
-            <FontInstallation fontData={fontData} />
-
-            <FontFooter fontData={fontData} />
-          </>
-        ) : (
-          <CircularProgress />
-        )
-      ) : (
-        <Homepage />
-      )}
+      <div>
+        <FontPreview {...{ fontData, fontLoaded }}></FontPreview>
+        <ReactMarkdown
+          renderers={{
+            // eslint-disable-next-line react/display-name
+            code: ({ language, value }) => (
+              <SyntaxHighlighter style={okaidia} language={language}>
+                {value}
+              </SyntaxHighlighter>
+            ),
+          }}
+        >
+          {fontReadme}
+        </ReactMarkdown>
+        <FontFooter {...{ fontData }}></FontFooter>
+      </div>
     </Doc>
   );
 }

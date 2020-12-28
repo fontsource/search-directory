@@ -1,15 +1,4 @@
 {
-  "plugins": [
-    [
-      "prismjs",
-      {
-        "languages": ["javascript", "scss", "css"],
-        "plugins": ["show-language"],
-        "theme": "okaidia",
-        "css": true
-      }
-    ]
-  ],
   "presets": [
     "@babel/preset-env",
     [

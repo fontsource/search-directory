@@ -6,7 +6,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from '@material-ui/core';
-import { Home } from '@material-ui/icons';
+import { Home, List } from '@material-ui/icons';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import { drawerWidth } from '../variables';
@@ -113,6 +113,18 @@ const SideNav = ({ search, setView, mobileOpen, closeNav }) => {
             <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem
+          onClick={() => {
+            setView('CHANGELOG');
+          }}
+          button
+          divider
+        >
+          <ListItemIcon>
+            <List />
+          </ListItemIcon>
+          <ListItemText primary="CHANGELOG" />
         </ListItem>
         {finalList}
       </Drawer>

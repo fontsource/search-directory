@@ -1,7 +1,5 @@
+import { Divider, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-import P from '../general/Paragraph';
-import HR from '../general/HorizontalRule';
 
 import fontSourceData from '../../fontSourceData';
 
@@ -18,21 +16,14 @@ const useStyles = makeStyles(theme => ({
 export default function FontFooter({ fontData }) {
   const classes = useStyles();
 
-  return (
+  return fontData.fontId ? (
     <>
-      <HR />
+      <Divider />
+
+      <br />
 
       {/* Source */}
-      <P>
-        <a href={fontData.source} className={classes.links}>
-          Source
-        </a>
-
-        {/* License */}
-        <a href={fontData.license} className={classes.links}>
-          License
-        </a>
-
+      <Typography variant="body1" paragraph>
         {/* Github */}
         <a
           href={fontSourceData.pkg(fontData.fontId).repo}
@@ -48,7 +39,11 @@ export default function FontFooter({ fontData }) {
         >
           Font On NPM
         </a>
-      </P>
+      </Typography>
+
+      <br />
     </>
+  ) : (
+    <></>
   );
 }
