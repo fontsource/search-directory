@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { Slider, Tooltip } from '@material-ui/core';
+import { Divider, Slider, Tooltip, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import previewGenerator from '../previewGenerator';
-
-import { H2 } from '../general/Headers';
-import P from '../general/Paragraph';
 
 // Generate styles for Main
 const useStyles = makeStyles(() => ({
@@ -18,15 +15,19 @@ export default function FontPreview({ fontData, fontLoaded }) {
   const classes = useStyles();
   const [fontSize, setFontSize] = useState(36);
 
-  return (
+  return fontData.fontId ? (
     <>
       {/* Title */}
-      <H2 classes={{ root: classes.inline }}>{fontData.fontName}</H2>
+      <Typography variant="h1" display="inline" gutterBottom>
+        {fontData.fontName}
+      </Typography>
 
       {/* Version */}
-      <P classes={{ root: classes.inline }}>{` ${fontData.version}`}</P>
+      <Typography variant="body1" display="inline" gutterBottom>
+        {` ${fontData.version}`}
+      </Typography>
 
-      <P component="div">
+      <Typography variant="body1" component="div" paragraph>
         {/* Styles */}
         <div>{`${fontData.styles.length} Style${
           fontData.styles.length > 1 ? 's' : ''
@@ -55,7 +56,8 @@ export default function FontPreview({ fontData, fontLoaded }) {
         <div>{`${fontData.weights.length} Weight${
           fontData.weights.length > 1 ? 's' : ''
         }: ${fontData.weights.join(', ')}`}</div>
-      </P>
+      </Typography>
+
       <Slider
         classes={{ root: classes.slider }}
         defaultValue={36}
@@ -69,7 +71,7 @@ export default function FontPreview({ fontData, fontLoaded }) {
         valueLabelDisplay="auto"
       />
       {fontLoaded ? (
-        <P>
+        <Typography variant="body1" paragraph>
           <span
             style={{
               fontFamily: fontData.fontId,
@@ -78,10 +80,16 @@ export default function FontPreview({ fontData, fontLoaded }) {
           >
             {previewGenerator(fontData.defSubset, fontData.fontId)}
           </span>
-        </P>
+        </Typography>
       ) : (
         ''
       )}
+
+      <br />
+      <Divider />
+      <br />
     </>
+  ) : (
+    <></>
   );
 }

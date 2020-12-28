@@ -4,6 +4,8 @@ const baseUrl =
 const fontSourceData = {
   base: baseUrl,
   list: `${baseUrl}/FONTLIST.json`,
+  readme: `${baseUrl}/README.md`,
+  changelog: `${baseUrl}/CHANGELOG.md`,
 
   /**
    * @param {string} pkg
@@ -14,7 +16,8 @@ const fontSourceData = {
 
     return {
       metadata: `${folder}/metadata.json`,
-      npm: `https://www.npmjs.com/package/fontsource-${pkg}`,
+      readme: `${folder}/README.md`,
+      npm: `https://www.npmjs.com/package/@fontsource/${pkg}`,
       preview: `${folder}/files/${pkg}-${subset}-400-normal.woff`,
       repo: `https://github.com/fontsource/fontsource/tree/master/packages/${pkg}`,
     };
