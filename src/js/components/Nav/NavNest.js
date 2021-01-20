@@ -3,8 +3,8 @@ import { Collapse, List } from '@material-ui/core';
 
 import NavItem from './NavItem';
 
-export default function NavNest({ children, onClick, ...props }) {
-  const [open, setOpen] = useState(false);
+export default function NavNest({ children, onClick, startOpen, ...props }) {
+  const [open, setOpen] = useState(!!startOpen);
 
   return (
     <>

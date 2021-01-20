@@ -9,22 +9,16 @@ import NavNest from './NavNest';
 import { drawerWidth } from '../../variables';
 import FontList from './FontList';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   drawer: {
-    [theme.breakpoints.up('md')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
+    width: drawerWidth,
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
   drawerContainer: {
-    overflow: 'auto',
+    overflow: 'overflow',
   },
 }));
 
@@ -54,7 +48,7 @@ export default function Nav({ search, setView, mobileOpen, closeNav }) {
 
       if (v.children) {
         return (
-          <NavNest key={i} {...props}>
+          <NavNest key={i} startOpen={props.primaryText === 'Fonts'} {...props}>
             {generatePagesNav(v.children, indentation + 1)}
           </NavNest>
         );
@@ -68,6 +62,7 @@ export default function Nav({ search, setView, mobileOpen, closeNav }) {
   return (
     <Drawer
       classes={{
+        root: classes.drawer,
         paper: classes.drawerPaper,
       }}
       {...(mobile
@@ -83,7 +78,7 @@ export default function Nav({ search, setView, mobileOpen, closeNav }) {
         : // Desktop Version
           { variant: 'permanent', open: true })}
     >
-      <List component="nav" className={classes.drawer}>
+      <List component="nav" className={classes.drawerContainer}>
         {pagesNav}
       </List>
     </Drawer>

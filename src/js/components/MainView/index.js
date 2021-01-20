@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Toolbar, Typography } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import template from 'lodash/template';
+
+import renderers from './renderers';
 
 import pages from '../../../pages';
 
@@ -11,8 +11,6 @@ import useFetch from '../../hooks/useFetch';
 import Doc from '../general/Doc';
 
 import fontSourceData from '../../fontSourceData';
-
-import FontPreview from './FontPreview';
 
 export default function MainView({ view }) {
   const [pagesObject] = useState(() => {
@@ -65,39 +63,7 @@ export default function MainView({ view }) {
       <Toolbar />
       <br />
       <div>
-        <ReactMarkdown
-          renderers={{
-            // eslint-disable-next-line react/display-name
-            code: ({ language, value }) => {
-              if (language === 'special') {
-                switch (value) {
-                  case 'FontPreview': {
-                    return <FontPreview {...{ fontData }} />;
-                  }
-
-                  default: {
-                    return undefined;
-                  }
-                }
-              }
-              return (
-                <SyntaxHighlighter style={okaidia} language={language}>
-                  {value}
-                </SyntaxHighlighter>
-              );
-            },
-            // eslint-disable-next-line react/display-name
-            heading: ({ level, children }) => (
-              <Typography variant={`h${level}`}>{children}</Typography>
-            ),
-            // eslint-disable-next-line react/display-name
-            paragraph: ({ children }) => (
-              <Typography variant="body1" paragraph>
-                {children}
-              </Typography>
-            ),
-          }}
-        >
+        <ReactMarkdown renderers={renderers(fontData)}>
           {/* eslint-disable-next-line no-nested-ternary */}
           {isFont
             ? fontData.fontId
