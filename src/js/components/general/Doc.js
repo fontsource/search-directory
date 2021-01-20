@@ -2,6 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    flexGrow: 1,
+  },
+  inner: {
     margin: 'auto',
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(65),
@@ -21,5 +24,9 @@ const useStyles = makeStyles(theme => ({
 export default function Doc({ children }) {
   const classes = useStyles();
 
-  return <div className={classes.root}>{children}</div>;
+  return (
+    <div className={classes.root}>
+      <div className={classes.inner}>{children}</div>
+    </div>
+  );
 }

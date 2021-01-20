@@ -5,7 +5,7 @@ import useEventListener from '@use-it/event-listener';
 
 import TopBar from './TopBar';
 import Nav from './Nav';
-import FontViewer from './MainView';
+import MainView from './MainView';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -47,7 +47,7 @@ export default function App() {
           closeNav: () => setMobileOpen(false),
         }}
       />
-      <FontViewer {...{ view }} />
+      <MainView {...{ view }} />
     </div>
   );
 }
