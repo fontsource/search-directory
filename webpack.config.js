@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   entry: ['./src/js/index.js'],
   output: {
-    filename: '[name]-[contentHash].js',
+    filename: '[name]-[contenthash].js',
     path: path.resolve(__dirname, './build'),
   },
   resolve: {
@@ -35,6 +35,10 @@ module.exports = {
         options: {
           limit: 100000,
         },
+      },
+      {
+        test: /\.md$/,
+        use: 'raw-loader',
       },
     ],
   },

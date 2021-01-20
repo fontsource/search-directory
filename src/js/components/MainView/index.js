@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Toolbar } from '@material-ui/core';
+import { Toolbar, Typography } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import template from 'lodash/template';
+
+import pages from '../../../pages';
 
 import useFetch from '../../hooks/useFetch';
 import Doc from '../general/Doc';
@@ -10,58 +13,50 @@ import Doc from '../general/Doc';
 import fontSourceData from '../../fontSourceData';
 
 import FontPreview from './FontPreview';
-import FontFooter from './FontFooter';
 
-export default function FontViewer({ view }) {
-  const [fontLoaded, setFontLoaded] = useState(false);
+export default function MainView({ view }) {
+  const [pagesObject] = useState(() => {
+    const tempPagesObject = {};
+    const generatePagesObject = pagesArray => {
+      for (let i = 0; i < pagesArray.length; i += 1) {
+        if (typeof pagesArray[i].id === 'string') {
+          tempPagesObject[pagesArray[i].id] = pagesArray[i].page;
+        }
+        if (pagesArray[i].children) {
+          generatePagesObject(pagesArray[i].children);
+        }
+      }
+    };
+    generatePagesObject(pages);
+    return tempPagesObject;
+  });
+  const [fontTemplate] = useState(() => template(pagesObject['font-template']));
 
-  let markdownUrl = '';
+  const isFont = view.startsWith('font-');
 
-  switch (view) {
-    case '':
-      markdownUrl = fontSourceData.readme;
-      break;
-    case 'CHANGELOG':
-      markdownUrl = fontSourceData.changelog;
-      break;
-    default:
-      markdownUrl = fontSourceData.pkg(view).readme;
-      break;
-  }
-
-  const fontReadme = useFetch(markdownUrl);
-
-  let fontData = useFetch(
-    view !== '' && view !== 'CHANGELOG'
-      ? fontSourceData.pkg(view).metadata
-      : '',
-    true
-  );
-
-  if (fontData === '') {
-    fontData = {
+  const fontData = useFetch(
+    isFont ? fontSourceData.pkg(view.substring(5)).metadata : '',
+    true,
+    {
       styles: [],
       subsets: [],
       weights: [],
-    };
-  }
+    }
+  );
 
   // Fetch font data
   useEffect(() => {
-    setFontLoaded(false);
     if (fontData.fontId) {
       // Fetch font file
-      new FontFace(
+      const fontFace = new FontFace(
         fontData.fontId,
         `url(${
           fontSourceData.pkg(fontData.fontId, fontData.defSubset).preview
-        })`
-      )
-        .load()
-        .then(result => {
-          document.fonts.add(result);
-          setFontLoaded(true);
-        });
+        })`,
+        {}
+      );
+      fontFace.display = 'block';
+      fontFace.load().then(result => document.fonts.add(result));
     }
   }, [fontData]);
 
@@ -70,20 +65,46 @@ export default function FontViewer({ view }) {
       <Toolbar />
       <br />
       <div>
-        <FontPreview {...{ fontData, fontLoaded }}></FontPreview>
         <ReactMarkdown
           renderers={{
             // eslint-disable-next-line react/display-name
-            code: ({ language, value }) => (
-              <SyntaxHighlighter style={okaidia} language={language}>
-                {value}
-              </SyntaxHighlighter>
+            code: ({ language, value }) => {
+              if (language === 'special') {
+                switch (value) {
+                  case 'FontPreview': {
+                    return <FontPreview {...{ fontData }} />;
+                  }
+
+                  default: {
+                    return undefined;
+                  }
+                }
+              }
+              return (
+                <SyntaxHighlighter style={okaidia} language={language}>
+                  {value}
+                </SyntaxHighlighter>
+              );
+            },
+            // eslint-disable-next-line react/display-name
+            heading: ({ level, children }) => (
+              <Typography variant={`h${level}`}>{children}</Typography>
+            ),
+            // eslint-disable-next-line react/display-name
+            paragraph: ({ children }) => (
+              <Typography variant="body1" paragraph>
+                {children}
+              </Typography>
             ),
           }}
         >
-          {fontReadme}
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {isFont
+            ? fontData.fontId
+              ? fontTemplate(fontData)
+              : ''
+            : pagesObject[view]}
         </ReactMarkdown>
-        <FontFooter {...{ fontData }}></FontFooter>
       </div>
     </Doc>
   );
