@@ -15,7 +15,7 @@ const generateFontSizes = ((min, max, step) => {
   return list;
 })(12, 96, 12);
 
-export default function FontPreview({ fontData }) {
+export default function FontPreview({ fontData, fontLoaded }) {
   const [fontSize, setFontSize] = useState(36);
 
   return (
@@ -36,7 +36,9 @@ export default function FontPreview({ fontData }) {
             fontSize: `${fontSize}px`,
           }}
         >
-          {previewGenerator(fontData.defSubset, fontData.fontId)}
+          {fontLoaded
+            ? previewGenerator(fontData.defSubset, fontData.fontId)
+            : ''}
         </span>
       </Typography>
     </>

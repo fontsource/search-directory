@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Drawer, List, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import pages from '../../../pages';
@@ -57,8 +56,6 @@ export default function Nav({ search, setView, mobileOpen, closeNav }) {
       return <NavItem key={i} {...props} />;
     });
 
-  const [pagesNav] = useState(generatePagesNav(pages));
-
   return (
     <Drawer
       classes={{
@@ -79,7 +76,7 @@ export default function Nav({ search, setView, mobileOpen, closeNav }) {
           { variant: 'permanent', open: true })}
     >
       <List component="nav" className={classes.drawerContainer}>
-        {pagesNav}
+        {generatePagesNav(pages)}
       </List>
     </Drawer>
   );

@@ -6,7 +6,7 @@ module.exports = {
   entry: ['./src/js/index.js'],
   output: {
     filename: '[name]-[contenthash].js',
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, './dist'),
   },
   resolve: {
     extensions: ['.js'],
@@ -24,17 +24,11 @@ module.exports = {
       },
       {
         test: /\.(png)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 100000,
-        },
+        loader: 'file-loader',
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 100000,
-        },
+        loader: 'file-loader',
       },
       {
         test: /\.md$/,

@@ -14,7 +14,7 @@ Install the necessary packages by running `npm ci` in the project root directory
 
 ### Building
 
-To build, run `npm run build` in the projects root directory. An **index.html** file will be generated in the **./build** directory. You can open that to view the product.
+To build, run `npm run build` in the projects root directory. An **index.html** file will be generated in the **./dist** directory. You can open that to view the product.
 
 ### Develop
 
