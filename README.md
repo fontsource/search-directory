@@ -18,7 +18,7 @@ To build, run `npm run build` in the projects root directory. An **index.html** 
 
 ### Develop
 
-To start development, run `npm start` in the project root directory. This will create a local server in which you can view the project from a browser. Any changes from the source files in the **./src** directory, will automatically reload the page.
+To start development, run `npm dev` in the project root directory. This will create a local server in which you can view the project from a browser. Any changes from the source files in the **./src** directory, will automatically reload the page.
 
 ## Built With
 

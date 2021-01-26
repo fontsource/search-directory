@@ -1,5 +1,5 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { drawerWidth } from '../../variables';
+import { drawerWidth } from '../core/constants';
 
 export default makeStyles(theme => ({
   title: {

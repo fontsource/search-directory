@@ -1,3 +1,4 @@
+import { Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -21,12 +22,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Doc({ children }) {
+export default function Wrapper({ children }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <div className={classes.inner}>{children}</div>
+      <div className={classes.inner}>
+        <Toolbar />
+        <br />
+        {children}
+      </div>
     </div>
   );
 }

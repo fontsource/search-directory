@@ -1,11 +1,11 @@
 import { Drawer, List, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import pages from '../../../pages';
+import pages from '../../pages';
 
 import NavItem from './NavItem';
 import NavNest from './NavNest';
 
-import { drawerWidth } from '../../variables';
+import { drawerWidth, fontsPath } from '../core/constants';
 import FontList from './FontList';
 
 const useStyles = makeStyles(() => ({
@@ -21,41 +21,38 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Nav({ search, setView, mobileOpen, closeNav }) {
+export default function Nav({ search, mobileOpen, closeNav }) {
   const classes = useStyles();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const generatePagesNav = (pagesArray, indentation = 1) =>
-    pagesArray.map((v, i) => {
-      if (v.id === 'font-template') {
-        return (
-          <FontList
-            key={i}
-            indentation={indentation}
-            {...{ search, setView }}
-          />
-        );
+    pagesArray.map(v => {
+      if (v.path === fontsPath) {
+        return <FontList key={fontsPath} {...{ search, indentation }} />;
       }
 
       const props = {
         primaryText: v.label,
-        icon: v.icon,
-        onClick: typeof v.id === 'string' ? () => setView(v.id) : undefined,
+        Icon: v.icon,
+        path: v.path,
         indentation,
       };
 
       if (v.children) {
         return (
-          <NavNest key={i} startOpen={props.primaryText === 'Fonts'} {...props}>
+          <NavNest
+            key={v.label}
+            startOpen={props.primaryText === 'Fonts'}
+            {...props}
+          >
             {generatePagesNav(v.children, indentation + 1)}
           </NavNest>
         );
       }
 
-      return <NavItem key={i} {...props} />;
+      return <NavItem key={v.label} {...props} />;
     });
-
   return (
     <Drawer
       classes={{

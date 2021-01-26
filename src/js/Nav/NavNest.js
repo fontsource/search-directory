@@ -8,15 +8,7 @@ export default function NavNest({ children, onClick, startOpen, ...props }) {
 
   return (
     <>
-      <NavItem
-        {...props}
-        onClick={() => {
-          setOpen(!open);
-          if (onClick) {
-            onClick();
-          }
-        }}
-      />
+      <NavItem {...props} onClick={() => setOpen(!open)} />
       <Collapse in={open} timeout={500}>
         <List component="div" disablePadding>
           {children}

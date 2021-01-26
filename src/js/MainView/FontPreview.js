@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MenuItem, Select, Typography } from '@material-ui/core';
 
-import previewGenerator from '../previewGenerator';
+import previewGenerator from './previewGenerator';
 
 const generateFontSizes = ((min, max, step) => {
   const list = [];

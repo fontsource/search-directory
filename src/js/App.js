@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import useEventListener from '@use-it/event-listener';
+import { Switch } from 'react-router-dom';
 
 import TopBar from './TopBar';
 import Nav from './Nav';
@@ -16,19 +16,7 @@ const useStyles = makeStyles(() => ({
 export default function App() {
   const classes = useStyles();
   const [search, setSearch] = useState('');
-  const [view, setView] = useState(window.location.hash.substring(1));
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // If view is changed , update hash
-  useEffect(() => {
-    window.location.hash = view;
-  }, [view]);
-
-  // Listen for URL hash changes and update view
-  useEventListener('hashchange', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash !== view) setView(hash);
-  });
 
   return (
     <div className={classes.root}>
@@ -42,12 +30,13 @@ export default function App() {
       <Nav
         {...{
           search,
-          setView,
           mobileOpen,
           closeNav: () => setMobileOpen(false),
         }}
       />
-      <MainView {...{ view }} />
+      <Switch>
+        <MainView />
+      </Switch>
     </div>
   );
 }

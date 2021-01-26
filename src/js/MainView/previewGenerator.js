@@ -47,5 +47,3 @@ export default function previewGenerator(subset, id) {
       return '';
   }
 }
-
-// case '':

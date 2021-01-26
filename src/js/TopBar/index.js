@@ -11,6 +11,9 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './style';
 
+/**
+ * @param {{setSearch: Function, openNav: Function}} props
+ */
 export default function TopBar({ setSearch, openNav }) {
   const classes = useStyles();
   const [input, setInput] = useState('');

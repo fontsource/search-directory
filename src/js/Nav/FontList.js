@@ -2,11 +2,11 @@ import { useState, useEffect, memo } from 'react';
 
 import NavItem from './NavItem';
 
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../core/useFetch';
 
-import fontSourceData from '../../fontSourceData';
+import fontSourceData from '../core/fontSourceData';
 
-const FontList = ({ search, setView, indentation }) => {
+const FontList = ({ search, indentation }) => {
   const fontList = useFetch(fontSourceData.list, true, []);
   const [finalList, setFinalList] = useState([]);
 
@@ -36,17 +36,14 @@ const FontList = ({ search, setView, indentation }) => {
             primaryText={key}
             secondaryText={fontList[key]}
             indentation={indentation}
-            onClick={() => {
-              setView(`font-${key}`);
-            }}
-            key={`font-${key}`}
+            path={`/fonts/${key}`}
+            key={key}
           />
         ))
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fontList, search]);
+  }, [fontList, search, indentation]);
 
-  return finalList;
+  return <span>{finalList}</span>;
 };
 
 export default memo(FontList);
