@@ -2,19 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    width: '100%',
     margin: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(65),
-    },
-    [theme.breakpoints.up('md')]: {
-      width: theme.spacing(80),
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: theme.spacing(120),
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: theme.spacing(200),
-    },
+    padding: theme.spacing(3),
+    maxWidth: '960px',
   },
 }));
 

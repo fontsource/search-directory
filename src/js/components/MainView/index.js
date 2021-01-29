@@ -68,23 +68,20 @@ export default function FontViewer({ view }) {
   return (
     <Doc>
       <Toolbar />
-      <br />
-      <div>
-        <FontPreview {...{ fontData, fontLoaded }}></FontPreview>
-        <ReactMarkdown
-          renderers={{
-            // eslint-disable-next-line react/display-name
-            code: ({ language, value }) => (
-              <SyntaxHighlighter style={okaidia} language={language}>
-                {value}
-              </SyntaxHighlighter>
-            ),
-          }}
-        >
-          {fontReadme}
-        </ReactMarkdown>
-        <FontFooter {...{ fontData }}></FontFooter>
-      </div>
+      <FontPreview {...{ fontData, fontLoaded }}></FontPreview>
+      <ReactMarkdown
+        renderers={{
+          // eslint-disable-next-line react/display-name
+          code: ({ language, value }) => (
+            <SyntaxHighlighter style={okaidia} language={language}>
+              {value}
+            </SyntaxHighlighter>
+          ),
+        }}
+      >
+        {fontReadme}
+      </ReactMarkdown>
+      <FontFooter {...{ fontData }}></FontFooter>
     </Doc>
   );
 }

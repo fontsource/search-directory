@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
   Drawer,
+  List,
   ListItem,
   ListItemIcon,
   ListItemText,
   useMediaQuery,
 } from '@material-ui/core';
-import { Home, List } from '@material-ui/icons';
+import { Home, List as ListIcon } from '@material-ui/icons';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import { drawerWidth } from '../variables';
@@ -102,31 +103,33 @@ const SideNav = ({ search, setView, mobileOpen, closeNav }) => {
           : // Desktop Version
             { variant: 'permanent', open: true })}
       >
-        <ListItem
-          onClick={() => {
-            setView('');
-          }}
-          button
-          divider
-        >
-          <ListItemIcon>
-            <Home />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            setView('CHANGELOG');
-          }}
-          button
-          divider
-        >
-          <ListItemIcon>
-            <List />
-          </ListItemIcon>
-          <ListItemText primary="CHANGELOG" />
-        </ListItem>
-        {finalList}
+        <List>
+          <ListItem
+            onClick={() => {
+              setView('');
+            }}
+            button
+            divider
+          >
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem
+            onClick={() => {
+              setView('CHANGELOG');
+            }}
+            button
+            divider
+          >
+            <ListItemIcon>
+              <ListIcon />
+            </ListItemIcon>
+            <ListItemText primary="CHANGELOG" />
+          </ListItem>
+          {finalList}
+        </List>
       </Drawer>
     </nav>
   );
