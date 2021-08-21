@@ -1,3 +1,5 @@
+### ⚠️ Further development of the Fontsource Search Directory will now take place within the `website` folder of the [Fontsource monorepo](https://github.com/fontsource/fontsource)
+
 # Fontsource Search Directory
 
 [![GitHub workflow status](https://img.shields.io/github/workflow/status/fontsource/search-directory/Publish%20Website)](https://github.com/fontsource/search-directory/actions?query=workflow%3A%22Publish+Website%22) [![license](https://img.shields.io/static/v1?label=license&message=MIT&color=brightgreen)](LICENSE) [![GitHub stars](https://img.shields.io/github/stars/fontsource/fontsource-search-directory.svg?style=social&label=Star)](https://github.com/fontsource/search-directory/stargazers)
